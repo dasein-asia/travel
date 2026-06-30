@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
 :root {
-  --blue: #002FA7; --blue-dark: #001A6E; --blue-light: #1A4DC4;
+  --blue: #1034A6; --blue-dark: #07207A; --blue-light: #2959D4;
   --gold: #C49B3E; --gold-light: #D4B06A;
   --slate: #4A6B8A; --slate-dark: #2E4A6B;
   --gray: #3A3A3A; --gray-light: #7A7A7A;
@@ -78,7 +78,7 @@ a { text-decoration:none; color:inherit; }
   filter:brightness(0.45) saturate(1.1);
   transform:scale(1.05); will-change:transform;
 }
-.hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0.25) 0%,rgba(0,47,167,0.25) 35%,rgba(196,155,62,0.15) 60%,rgba(26,26,46,0.7) 100%); }
+.hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0.25) 0%,rgba(16,52,166,0.25) 35%,rgba(196,155,62,0.15) 60%,rgba(26,26,46,0.7) 100%); }
 .mist { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
 .mist span { position:absolute; bottom:-10%; left:50%; width:200%; height:40%; background:radial-gradient(ellipse at center,rgba(255,255,255,0.06) 0%,transparent 70%); animation:mistDrift 12s ease-in-out infinite alternate; transform:translateX(-50%); }
 .mist span:nth-child(2) { animation-delay:-6s; animation-duration:18s; width:180%; opacity:0.5; }
@@ -647,7 +647,7 @@ mapScript.onload=function(){
   ];
   spots.forEach(s=>{
     const icon=L.divIcon({
-      html:'<div style="background:#002FA7;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,0.25);">📍</div>',
+      html:'<div style="background:#1034A6;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,0.25);">📍</div>',
       className:'',iconSize:[36,36],iconAnchor:[18,18],popupAnchor:[0,-22]
     });
     L.marker([s.lat,s.lng],{icon}).addTo(map)
@@ -657,7 +657,7 @@ mapScript.onload=function(){
     .bindPopup('<h4>📍 新乡市</h4><div class="tag">行程起点 & 枢纽</div>');
   const coords=spots.map(s=>[s.lat,s.lng]);
   coords.unshift([35.302,113.925]);
-  L.polyline(coords,{color:'#002FA7',weight:2.5,opacity:0.5,dashArray:'8 12'}).addTo(map);
+  L.polyline(coords,{color:'#1034A6',weight:2.5,opacity:0.5,dashArray:'8 12'}).addTo(map);
   map.fitBounds([[35.2,113.2],[35.9,113.9]],{padding:[40,40]});
   map.on('click',()=>map.scrollWheelZoom.enable());
 };
