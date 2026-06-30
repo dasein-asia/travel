@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>万仙山 · 郭亮挂壁公路 | 新乡南太行</title>
+<meta name="description" content="新乡万仙山·郭亮村 — 闻名遐迩的郭亮挂壁公路（绝壁长廊），崖上人家、影视村，《举起手来》取景地。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', sans-serif;
+  color: #4a4a5a;
+  background: #ffffff;
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+:root {
+  --green: #2D5A3D; --green-dark: #1E3F2A; --green-light: #4A7B5A;
+  --brown: #8B6B3E; --brown-light: #B8956A;
+  --radius: 12px; --radius-lg: 20px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+}
+.page-transition { position: fixed; inset: 0; z-index: 9999; background: var(--green-dark); pointer-events: none; opacity: 0; transition: opacity 0.45s ease; }
+.page-transition.active { opacity: 1; }
+.back-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.back-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--green); cursor: pointer;
+  transition: gap 0.2s;
+  background: none; border: none; font-family: inherit;
+}
+.back-btn:hover { gap: 0.75rem; }
+.back-arrow { display: inline-block; width: 20px; height: 20px; border-left: 2px solid var(--green); border-bottom: 2px solid var(--green); transform: rotate(45deg); }
+
+.hero {
+  position: relative; height: 60vh; min-height: 400px;
+  overflow: hidden;
+  background: url('./images/scenic_cliff_road.jpg') center/cover;
+}
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); }
+.hero-content {
+  position: absolute; bottom: 3rem; left: 2rem; right: 2rem;
+  z-index: 1; color: #fff; max-width: 700px;
+  animation: fadeUp 0.8s ease-out;
+}
+.hero-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.7; margin-bottom: 0.5rem; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.15; margin-bottom: 0.5rem; }
+.hero h1 .accent { background: linear-gradient(135deg, var(--brown-light), var(--green-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1rem; opacity: 0.8; max-width: 500px; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.content { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+.section { margin-bottom: 3rem; }
+.section:last-child { margin-bottom: 0; }
+.section-label { font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--green); margin-bottom: 0.75rem; }
+.section h2 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 1rem; line-height: 1.3; font-family: 'Noto Serif SC', serif; }
+.section p { color: #5a5a6a; margin-bottom: 1rem; line-height: 1.9; }
+.section p:last-child { margin-bottom: 0; }
+
+.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0,0,0,0.06); border-radius: var(--radius); overflow: hidden; margin: 2rem 0; }
+.info-item { background: #f8f9fa; padding: 1.5rem 1rem; text-align: center; }
+.info-item .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.info-item .label { font-size: 0.7rem; color: #8e8e9a; margin-bottom: 0.25rem; }
+.info-item .value { font-size: 0.9rem; font-weight: 600; color: #1a1a2e; }
+
+.gallery-grid-detail { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.gallery-grid-detail .photo { border-radius: var(--radius); aspect-ratio: 16/10; overflow: hidden; transition: transform 0.3s; }
+.gallery-grid-detail .photo:hover { transform: scale(1.02); }
+.gallery-grid-detail .photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.timeline-detail { margin-top: 1.5rem; }
+.timeline-detail .item { padding-left: 1.5rem; border-left: 2px solid var(--green-light); padding-bottom: 1.5rem; position: relative; }
+.timeline-detail .item:last-child { padding-bottom: 0; }
+.timeline-detail .item::before { content: ''; position: absolute; left: -5px; top: 4px; width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+.timeline-detail .item .time { font-size: 0.7rem; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: 0.1em; }
+.timeline-detail .item p { font-size: 0.88rem; margin-top: 0.3rem; }
+
+.footer { background: #1a1a2e; color: rgba(255,255,255,0.7); padding: 2rem 1.5rem; text-align: center; }
+.footer p { font-size: 0.8rem; line-height: 1.6; }
+.footer a { color: var(--green-light); cursor: pointer; }
+
+blockquote { margin: 1.5rem 0; padding: 1.5rem 2rem; background: #f8f9fa; border-left: 4px solid var(--green); border-radius: 0 var(--radius) var(--radius) 0; font-style: italic; color: #5a5a6a; }
+
+@media (max-width: 640px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .gallery-grid-detail { grid-template-columns: 1fr; }
+  .hero { height: 50vh; min-height: 350px; }
+  .hero-content { bottom: 2rem; left: 1.5rem; right: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="page-transition" id="pageTransition"></div>
+
+<div class="back-bar">
+  <button class="back-btn" onclick="goBack()"><span class="back-arrow"></span>返回主页</button>
+</div>
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-breadcrumb">Xinxiang · 辉县 · 4A</div>
+    <h1>万仙山 · <span class="accent">郭亮挂壁公路</span></h1>
+    <p>13名村民5年手工开凿的绝壁长廊 — "世界第九大奇迹"。</p>
+  </div>
+</section>
+
+<div class="content">
+  <div class="section">
+    <p class="section-label">Introduction</p>
+    <h2>太行山最动人的奇迹</h2>
+    <p>万仙山景区位于新乡市辉县沙窑乡，是国家4A级旅游景区、国家地质公园。景区由郭亮村、南坪、罗姐寨三部分组成，其中郭亮村因一条震惊世界的挂壁公路而闻名遐迩。</p>
+    <p>郭亮挂壁公路（又称绝壁长廊）全长约1300米，完全开凿在海拔1700米的悬崖绝壁上。1972年至1977年，郭亮村的13名村民在村支书申明信的带领下，用钢钎、铁锤等最原始的工具，硬是在红岩绝壁上凿出了这条通往外界的道路，被誉为"世界第九大奇迹"。</p>
+    <p>挂壁公路外侧开有35个天窗，用于采光和排渣。站在天窗边向外望去，万丈深渊就在脚下，惊险刺激。这里是电影《举起手来》的取景地，也是众多影视剧的拍摄基地。郭亮村也因此成为著名的"影视村"。</p>
+    <blockquote>"郭亮挂壁公路是人类挑战自然极限的见证，是太行精神的丰碑。"</blockquote>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Visitor Info</p>
+    <div class="info-grid">
+      <div class="info-item"><div class="icon">🕐</div><div class="label">建议时长</div><div class="value">4-6小时</div></div>
+      <div class="info-item"><div class="icon">🎫</div><div class="label">门票</div><div class="value">¥107（含景交）</div></div>
+      <div class="info-item"><div class="icon">📍</div><div class="label">地址</div><div class="value">辉县·沙窑乡</div></div>
+      <div class="info-item"><div class="icon">🚌</div><div class="label">交通</div><div class="value">新乡拼车约1.5h</div></div>
+      <div class="info-item"><div class="icon">⏰</div><div class="label">开放时间</div><div class="value">07:30-18:00</div></div>
+      <div class="info-item"><div class="icon">🏠</div><div class="label">住宿</div><div class="value">郭亮村民宿¥200+</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Route</p>
+    <h2>游览路线推荐</h2>
+    <div class="timeline-detail">
+      <div class="item">
+        <span class="time">🚪 景区入口 → 郭亮村（1h）</span>
+        <p>乘景区交通车至郭亮村入口，步行穿越郭亮挂壁公路（绝壁长廊）。沿途每经一个天窗都值得驻足观赏，从不同角度感受悬崖的险峻和工程的伟大。</p>
+      </div>
+      <div class="item">
+        <span class="time">🏘️ 郭亮村 · 崖上人家（1h）</span>
+        <p>出挂壁公路即到郭亮村，游览崖上人家观景台，这里是拍摄挂壁公路全景的最佳位置。村子里保留了许多石屋古建筑，可感受太行山居生活。</p>
+      </div>
+      <div class="item">
+        <span class="time">🎬 影视村 → 炮楼（0.5h）</span>
+        <p>郭亮村是《举起手来》等多部电影的取景地。村口的炮楼是影视拍摄留下的人工景观，也是俯瞰峡谷的绝佳位置。</p>
+      </div>
+      <div class="item">
+        <span class="time">🌲 南坪 · 丹分沟（2h）</span>
+        <p>从郭亮乘车至南坪，游览丹分沟、黑龙潭瀑布。丹分沟是一条U形峡谷，溪水清澈，绿树成荫，适合亲子徒步。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Gallery</p>
+    <h2>万仙山光影</h2>
+    <div class="gallery-grid-detail">
+      <div class="photo"><img src="./images/scenic_cliff_road.jpg" alt="郭亮挂壁公路" loading="lazy"></div>
+      <div class="photo"><img src="./images/scenic_valley.jpg" alt="万仙山峡谷" loading="lazy"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2026 新乡南太行旅游指南 · <a onclick="goBack()">返回主页</a></p>
+</footer>
+
+<script>
+const pt = document.getElementById('pageTransition');
+function goBack() { pt.classList.add('active'); setTimeout(() => { window.location.href = 'index.html'; }, 450); }
+</script>
+</body>
+</html>

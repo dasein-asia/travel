@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>八里沟 · 天河瀑布 | 新乡南太行</title>
+<meta name="description" content="新乡八里沟 — 国家5A级景区，天河大瀑布落差180米，红石河、水帘洞、猕猴保护区，南太行水景之最。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', sans-serif;
+  color: #4a4a5a;
+  background: #ffffff;
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+:root {
+  --green: #2D5A3D; --green-dark: #1E3F2A; --green-light: #4A7B5A;
+  --brown: #8B6B3E; --brown-light: #B8956A;
+  --radius: 12px; --radius-lg: 20px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+}
+.page-transition { position: fixed; inset: 0; z-index: 9999; background: var(--green-dark); pointer-events: none; opacity: 0; transition: opacity 0.45s ease; }
+.page-transition.active { opacity: 1; }
+.back-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.back-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--green); cursor: pointer;
+  transition: gap 0.2s;
+  background: none; border: none; font-family: inherit;
+}
+.back-btn:hover { gap: 0.75rem; }
+.back-arrow { display: inline-block; width: 20px; height: 20px; border-left: 2px solid var(--green); border-bottom: 2px solid var(--green); transform: rotate(45deg); }
+
+.hero {
+  position: relative; height: 60vh; min-height: 400px;
+  overflow: hidden;
+  background: url('./images/scenic_waterfall.jpg') center/cover;
+}
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); }
+.hero-content {
+  position: absolute; bottom: 3rem; left: 2rem; right: 2rem;
+  z-index: 1; color: #fff; max-width: 700px;
+  animation: fadeUp 0.8s ease-out;
+}
+.hero-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.7; margin-bottom: 0.5rem; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.15; margin-bottom: 0.5rem; }
+.hero h1 .accent { background: linear-gradient(135deg, var(--green-light), var(--brown-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1rem; opacity: 0.8; max-width: 500px; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.content { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+.section { margin-bottom: 3rem; }
+.section:last-child { margin-bottom: 0; }
+.section-label { font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--green); margin-bottom: 0.75rem; }
+.section h2 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 1rem; line-height: 1.3; font-family: 'Noto Serif SC', serif; }
+.section p { color: #5a5a6a; margin-bottom: 1rem; line-height: 1.9; }
+.section p:last-child { margin-bottom: 0; }
+
+.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0,0,0,0.06); border-radius: var(--radius); overflow: hidden; margin: 2rem 0; }
+.info-item { background: #f8f9fa; padding: 1.5rem 1rem; text-align: center; }
+.info-item .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.info-item .label { font-size: 0.7rem; color: #8e8e9a; margin-bottom: 0.25rem; }
+.info-item .value { font-size: 0.9rem; font-weight: 600; color: #1a1a2e; }
+
+.gallery-grid-detail { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.gallery-grid-detail .photo { border-radius: var(--radius); aspect-ratio: 16/10; overflow: hidden; transition: transform 0.3s; }
+.gallery-grid-detail .photo:hover { transform: scale(1.02); }
+.gallery-grid-detail .photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.timeline-detail { margin-top: 1.5rem; }
+.timeline-detail .item { padding-left: 1.5rem; border-left: 2px solid var(--green-light); padding-bottom: 1.5rem; position: relative; }
+.timeline-detail .item:last-child { padding-bottom: 0; }
+.timeline-detail .item::before { content: ''; position: absolute; left: -5px; top: 4px; width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+.timeline-detail .item .time { font-size: 0.7rem; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: 0.1em; }
+.timeline-detail .item p { font-size: 0.88rem; margin-top: 0.3rem; }
+
+.footer { background: #1a1a2e; color: rgba(255,255,255,0.7); padding: 2rem 1.5rem; text-align: center; }
+.footer p { font-size: 0.8rem; line-height: 1.6; }
+.footer a { color: var(--green-light); cursor: pointer; }
+
+@media (max-width: 640px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .gallery-grid-detail { grid-template-columns: 1fr; }
+  .hero { height: 50vh; min-height: 350px; }
+  .hero-content { bottom: 2rem; left: 1.5rem; right: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="page-transition" id="pageTransition"></div>
+
+<div class="back-bar">
+  <button class="back-btn" onclick="goBack()"><span class="back-arrow"></span>返回主页</button>
+</div>
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-breadcrumb">Xinxiang · 辉县 · 5A</div>
+    <h1>八里沟 · <span class="accent">天河瀑布</span></h1>
+    <p>天河飞瀑落九霄，红石碧水映太行 — 南太行水景之最。</p>
+  </div>
+</section>
+
+<div class="content">
+  <div class="section">
+    <p class="section-label">Introduction</p>
+    <h2>南太行的水景精华</h2>
+    <p>八里沟景区位于河南省新乡市辉县上八里镇，是国家5A级旅游景区、国家地质公园、自然猕猴保护区。景区以"雄、奇、险、秀、幽"著称，荟萃了太行山水之精华，有"太行之魂、中华风骨"的美誉。</p>
+    <p>八里沟的核心景观是天河大瀑布，落差高达180米，宽约20米，是南太行地区落差最大的瀑布。雨季时瀑布如银河倒挂，水声震天，水雾弥漫，阳光下常有彩虹出现。瀑布后有水帘洞，游客可穿行其间，感受"水帘洞天"的奇妙体验。</p>
+    <p>景区内还有红石河、桃花湾、山神庙、羊洲地、猕猴保护区等多个景点。红石河因河床为红色砂岩而得名，碧水红石相映成趣。猕猴保护区内有数百只野生太行猕猴，活泼可爱，是亲子游的热门打卡地。</p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Visitor Info</p>
+    <div class="info-grid">
+      <div class="info-item"><div class="icon">🕐</div><div class="label">建议时长</div><div class="value">4-6小时</div></div>
+      <div class="info-item"><div class="icon">🎫</div><div class="label">门票</div><div class="value">¥100（景交¥40）</div></div>
+      <div class="info-item"><div class="icon">📍</div><div class="label">地址</div><div class="value">辉县·上八里镇</div></div>
+      <div class="info-item"><div class="icon">🚌</div><div class="label">交通</div><div class="value">新乡拼车约1.5h</div></div>
+      <div class="info-item"><div class="icon">⏰</div><div class="label">开放时间</div><div class="value">08:00-18:00</div></div>
+      <div class="info-item"><div class="icon">🏷️</div><div class="label">联票</div><div class="value">三景区¥120/3天</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Route</p>
+    <h2>游览路线推荐</h2>
+    <div class="timeline-detail">
+      <div class="item">
+        <span class="time">🚪 山门 → 桃花湾（0.5h）</span>
+        <p>从景区入口乘坐景交车至桃花湾，沿途欣赏太行峡谷风光。桃花湾三面环山，春季桃花盛开时景色极美。</p>
+      </div>
+      <div class="item">
+        <span class="time">💦 桃花湾 → 天河瀑布（1.5h）</span>
+        <p>沿溪流而上，途经山神庙、羊洲地，抵达天河大瀑布。可在水帘洞穿行，感受瀑布的震撼力。建议上午前往，光线最佳。</p>
+      </div>
+      <div class="item">
+        <span class="time">🪨 天河瀑布 → 红石河（1h）</span>
+        <p>可乘观光电梯或沿步道上行至红石河。红色砂岩河床与碧绿河水形成强烈视觉对比，是拍照的绝佳地点。</p>
+      </div>
+      <div class="item">
+        <span class="time">🐒 猕猴保护区 → 返程（1h）</span>
+        <p>下山途中经过猕猴保护区，可观太行野生猕猴。注意保管好随身物品，不要投喂人类食品。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Gallery</p>
+    <h2>八里沟风光</h2>
+    <div class="gallery-grid-detail">
+      <div class="photo"><img src="./images/scenic_waterfall.jpg" alt="天河瀑布" loading="lazy"></div>
+      <div class="photo"><img src="./images/scenic_stream.jpg" alt="八里沟溪流" loading="lazy"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2026 新乡南太行旅游指南 · <a onclick="goBack()">返回主页</a></p>
+</footer>
+
+<script>
+const pt = document.getElementById('pageTransition');
+function goBack() { pt.classList.add('active'); setTimeout(() => { window.location.href = 'index.html'; }, 450); }
+</script>
+</body>
+</html>

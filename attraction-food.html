@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新乡 · 太行美食 | 新乡南太行</title>
+<meta name="description" content="新乡及南太行美食指南 — 红焖羊肉、获嘉饸饹面、地锅鸡、太行山小米焖饭、牛忠喜烧饼。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', sans-serif;
+  color: #4a4a5a;
+  background: #ffffff;
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+:root {
+  --green: #2D5A3D; --green-dark: #1E3F2A; --green-light: #4A7B5A;
+  --brown: #8B6B3E; --brown-light: #B8956A;
+  --radius: 12px; --radius-lg: 20px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+}
+.page-transition { position: fixed; inset: 0; z-index: 9999; background: var(--green-dark); pointer-events: none; opacity: 0; transition: opacity 0.45s ease; }
+.page-transition.active { opacity: 1; }
+.back-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.back-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--green); cursor: pointer;
+  transition: gap 0.2s;
+  background: none; border: none; font-family: inherit;
+}
+.back-btn:hover { gap: 0.75rem; }
+.back-arrow { display: inline-block; width: 20px; height: 20px; border-left: 2px solid var(--green); border-bottom: 2px solid var(--green); transform: rotate(45deg); }
+
+.hero {
+  position: relative; height: 60vh; min-height: 400px;
+  overflow: hidden;
+  background: url('./images/food_meat_stew.jpg') center/cover;
+}
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); }
+.hero-content {
+  position: absolute; bottom: 3rem; left: 2rem; right: 2rem;
+  z-index: 1; color: #fff; max-width: 700px;
+  animation: fadeUp 0.8s ease-out;
+}
+.hero-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.7; margin-bottom: 0.5rem; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.15; margin-bottom: 0.5rem; }
+.hero h1 .accent { background: linear-gradient(135deg, var(--brown-light), #d4a04a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1rem; opacity: 0.8; max-width: 500px; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.content { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+.section { margin-bottom: 3rem; }
+.section:last-child { margin-bottom: 0; }
+.section-label { font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--green); margin-bottom: 0.75rem; }
+.section h2 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 1rem; line-height: 1.3; font-family: 'Noto Serif SC', serif; }
+.section p { color: #5a5a6a; margin-bottom: 1rem; line-height: 1.9; }
+.section p:last-child { margin-bottom: 0; }
+
+.food-card { display: flex; gap: 1.5rem; margin: 1.5rem 0; padding: 1.5rem; background: #f8f9fa; border-radius: var(--radius); align-items: flex-start; }
+.food-card .food-img { width: 160px; min-width: 160px; height: 120px; border-radius: 8px; overflow: hidden; }
+.food-card .food-img img { width: 100%; height: 100%; object-fit: cover; }
+.food-card .food-info { flex: 1; }
+.food-card .food-info h3 { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; font-family: 'Noto Serif SC', serif; }
+.food-card .food-info .food-en { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: var(--brown); font-weight: 500; margin-bottom: 0.5rem; }
+.food-card .food-info p { font-size: 0.85rem; color: #5a5a6a; margin-bottom: 0; line-height: 1.7; }
+.food-card .food-info .recommend { display: inline-block; margin-top: 0.5rem; font-size: 0.75rem; color: var(--green); font-weight: 600; }
+@media(max-width:640px) { .food-card { flex-direction: column; } .food-card .food-img { width: 100%; min-width: auto; height: 180px; } }
+
+.footer { background: #1a1a2e; color: rgba(255,255,255,0.7); padding: 2rem 1.5rem; text-align: center; }
+.footer p { font-size: 0.8rem; line-height: 1.6; }
+.footer a { color: var(--green-light); cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="page-transition" id="pageTransition"></div>
+
+<div class="back-bar">
+  <button class="back-btn" onclick="goBack()"><span class="back-arrow"></span>返回主页</button>
+</div>
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-breadcrumb">Xinxiang · 味觉之旅</div>
+    <h1>新乡 · <span class="accent">太行美食</span></h1>
+    <p>从红焖羊肉到饸饹面，从地锅鸡到太行小米 — 舌尖上的新乡味道。</p>
+  </div>
+</section>
+
+<div class="content">
+  <div class="section">
+    <p class="section-label">Introduction</p>
+    <h2>太行山脚下的风味人间</h2>
+    <p>新乡地处中原，南太行山脚下，美食融合了豫菜的传统与山野的质朴。这里不仅有享誉中原的红焖羊肉，还有获嘉饸饹面、太行山地锅鸡等特色美食。山中采摘的野菜、小米等食材，更是赋予了新乡美食独特的地域风味。</p>
+    <p>以下精选新乡及南太行地区最值得品尝的7道美食，每一道都承载着这片土地的记忆与温度。</p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Signature Dishes</p>
+    <h2>必吃推荐</h2>
+
+    <div class="food-card">
+      <div class="food-img"><img src="./images/food_meat_stew.jpg" alt="红焖羊肉" loading="lazy"></div>
+      <div class="food-info">
+        <h3>🍖 红焖羊肉</h3>
+        <div class="food-en">Braised Lamb</div>
+        <p>新乡的头号招牌美食，起源于晚清时期。选用本地山羊，以老汤文火慢炖，肉质酥烂入味，筋软香浓。红焖羊肉的汤汁浓郁微辣，配以白萝卜和粉条，是冬日暖身的绝佳选择。</p>
+        <span class="recommend">推荐：新乡市区老字号饭店</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-img"><img src="./images/food_beef_noodle.jpg" alt="获嘉饸饹面" loading="lazy"></div>
+      <div class="food-info">
+        <h3>🍜 获嘉饸饹面</h3>
+        <div class="food-en">Hele Noodles</div>
+        <p>获嘉县的特色面食。面条用饸饹床子压制而成，口感筋道爽滑。羊肉汤底浓郁鲜香，加一勺红油辣子，撒上蒜苗和香菜，一碗下肚，酣畅淋漓。获嘉人早餐就吃饸饹面，可见其受欢迎程度。</p>
+        <span class="recommend">推荐：获嘉县城老街</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-img"><img src="./images/food_chicken_dish.jpg" alt="地锅鸡" loading="lazy"></div>
+      <div class="food-info">
+        <h3>🥟 太行山地锅鸡</h3>
+        <div class="food-en">Taihang Pot Chicken</div>
+        <p>南太行山区的农家招牌菜。小泥炉架铁锅，放入散养土鸡和秘制酱料慢炖，锅边贴上一圈玉米面饼。鸡肉酱香浓郁，面饼吸饱汤汁后外焦里嫩，一锅两吃，是山里人待客的最高礼遇。</p>
+        <span class="recommend">推荐：八里沟/万仙山景区农家乐</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-img"><img src="./images/food_millet.jpg" alt="太行山小米焖饭" loading="lazy"></div>
+      <div class="food-info">
+        <h3>🌾 太行山小米焖饭</h3>
+        <div class="food-en">Millet Rice</div>
+        <p>辉县太行山区特产小米，用铁锅焖制而成。小米粒粒分明，锅底的"锅嘎巴"是整锅饭的精华，焦香酥脆。配以土豆、豆角、粉条等山野食材一同焖煮，简单质朴却回味悠长。</p>
+        <span class="recommend">推荐：山区农家乐</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-img"><img src="./images/food_sesame_bread.jpg" alt="牛忠喜烧饼" loading="lazy"></div>
+      <div class="food-info">
+        <h3>🥮 牛忠喜烧饼</h3>
+        <div class="food-en">Sesame Cake</div>
+        <p>新乡独有，百年老字号。烧饼外皮酥脆，层层起酥，内馅有咸甜两种：咸口是葱花肉末，甜口是红糖芝麻。刚出炉的烧饼香气四溢，咬一口酥掉渣，是新乡人从小吃到大的味道。</p>
+        <span class="recommend">推荐：新乡市区牛忠喜烧饼店</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-img"><img src="./images/food_stir_fry.jpg" alt="蒸野菜" loading="lazy"></div>
+      <div class="food-info">
+        <h3>🥗 太行山蒸野菜</h3>
+        <div class="food-en">Steamed Wild Herbs</div>
+        <p>春天太行山里的野菜是最鲜美的。茵陈、灰灰菜、山韭菜、香椿等山野时蔬采摘后洗净拌面蒸制，蘸蒜汁或辣椒油食用。原汁原味的山野清香，是城里吃不到的天然味道。</p>
+        <span class="recommend">推荐：春季到访·景区农家乐</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-img"><img src="./images/food_beef_noodle.jpg" alt="饸饹面" loading="lazy"></div>
+      <div class="food-info">
+        <h3>🍲 太行山地锅大烩菜</h3>
+        <div class="food-en">Taihang Stew</div>
+        <p>山里人叫"老锅菜"，是南太行最具代表性的农家菜。白菜、老豆腐、山菌、粉条、卤肉片，一锅乱炖，柴火地锅慢煨。看似粗犷却滋味醇厚，浇在小米焖饭上，让人连吃三碗。</p>
+        <span class="recommend">推荐：景区农家乐·提前预订</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2026 新乡南太行旅游指南 · <a onclick="goBack()">返回主页</a></p>
+</footer>
+
+<script>
+const pt = document.getElementById('pageTransition');
+function goBack() { pt.classList.add('active'); setTimeout(() => { window.location.href = 'index.html'; }, 450); }
+</script>
+</body>
+</html>
